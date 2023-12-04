@@ -1,0 +1,95 @@
+accounts
+. id / bigint (PK) : key
+. email / varchar (UK) : user email address
+. password / varchar : encoded password
+. locked / boolean : user account lock state
+. enabled / boolean : user account usable state
+
+profiles
+. id / bigint (PK) : key
+. accountId / bigint (FK) : this user's account id
+. nickname / varchar (UK) : user's nick name
+. postCnt / int : user's post count
+. followerCnt / int : user's follower count
+. followeeCnt / int : user follow other user count
+. profileImgCnt / int : this profile's image count
+
+profileImgs
+. id / bigint (PK) : key
+. profileId / bigint (FK) : this img's profile id
+. img / blob : image file binary data
+
+posts
+. id / bigint (PK) : key
+. profileId / bigint (FK) : this post writer's profile id
+. content / varchar : comment about this post
+. likeCnt / int : like count of this post
+
+postImgs
+. id / bigint (PK) : key
+. postId / bigint (FK) : post id of this image
+. img / blob : image binary data
+
+postLikes
+. id / bigint (PK) : key
+. postId / bigint (FK) : post id for this like
+. profileId / bigint (FK) : user's profile id that post liked
+
+postComments
+. id / bigint (PK) : key
+. profileId / bigint (FK) : this comment writer's profile id
+. postId / bigint (FK) : post id for this comment
+. parentId / bigint(FK) : parent comment for id this comment
+. likeCnt / int : like count for this comment
+. content / varchar : content for this comment
+
+postCommentLikes
+. id / bigint (PK) : key
+. commentId / bigint (FK) : comment id for this like
+. profileId / bigint (FK) : user's profile id that comment liked
+
+postThumbnails
+. id / bigint (PK) : key
+. postId / bigint (FK) : post id for this thumbnail
+. Img / blob : image binary data
+
+
+directMessages
+
+ . id / bigint(PK) : key
+
+ . senderId : bigint (FK) : message sender id from account id
+
+ . receiverId : bigint (FK) : message receiver id  from account id
+
+ . cdate : datetime : this message sended datetime ( timezone : utc )
+
+ . mdate : datetime : when message checked datetime ( timezone : utc )
+
+ 
+
+directMessageInvites
+
+ . id : bigint (PK) : key
+
+ . senderId : bigint (FK) : account Id that first send message 
+
+ . receiverId : bigint (FK) : account Id that check invite message
+
+ . state : int : cur invite state [ ex : wait / agree / cancle / block ]
+
+ 
+
+followRelationships
+
+ . followerId : bigint (FK) : someone's follower id
+
+ . followeeId : bigint (FK) : someone's followee id
+
+ 
+
+followInvites
+
+ . followerId : bigint (FK) : follow try someone's id
+
+ . followeeId : bigint (FK) : followee's id
