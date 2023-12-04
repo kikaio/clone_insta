@@ -1,0 +1,42 @@
+SignController
+method			url			desc
+GET				sign-up			sign up page request
+POST			sign-up			sign up request
+GET				sign-in			sign in page request
+POST			sign-in			form sign in request
+GET				sign-out/{id}	logout reuqest from app 
+
+AccountContoller
+method			url					desc
+GET				accounts/{id}		account detail page request
+POST			accounts			create account data by admin user
+PUT, PATCH		accounts/{id}		modify account data
+DELETE			accounts/{id}		account data try delete
+ 
+ 
+
+ProfileController
+method			url					desc
+GET				profiles/{id}		profile detail page request
+POST			profiles			create profile by admin user 
+PUT, PATCH		profiles/{id}		profile modify data
+ 
+ 
+
+PostController - Post 관련
+method			url					desc
+GET	 			posts	 			get post list request
+GET				posts/{id}			get posts detail page request
+GET	 			posts/create-page	post create page request
+POST	 		posts	 			post data create
+DELETE			posts/{id}			post data try delete 
+GET				posts/{id}/like		post like 
+GET				posts/{id}/unlike	post unlike
+ 
+
+PostController - Comment 관련
+method		url									desc
+GET			posts/{postId}/comments				get comments in this post
+GET			posts/{postId}/comments/{commentId}	get comment and sub comments about this post
+POST		posts/{postId}/comments				create comment or sub comment to this post
+DEELTE		posts/{postId}/comments/{commentId}	comments data try delete (include sub comments)
