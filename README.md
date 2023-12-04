@@ -17,12 +17,22 @@ instagram clone coding
 저장소
  . git repository
  
+springboot 의존성
+ . spring web
+ . lombok
+ . spring security
+ . mustache 
+ . spring data jpa
+ . spring data redis
+ . mysql driver
+ . spring ata mongoDB
+ 
 프로젝트 back end 환경
  . springboot
  . spring-data jpa
  . psring-data redis
  . spring MVC
- . JAVA 8
+ . JAVA 17
  . mysql 
  . redis
  
