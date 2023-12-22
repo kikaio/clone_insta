@@ -6,8 +6,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-import jakarta.servlet.DispatcherType;
-
 @Configuration
 @EnableWebSecurity
 public class AppConf {
@@ -15,9 +13,24 @@ public class AppConf {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
+        String[] publicUlrls = {
+            "/"
+            , "/favicon.ico"
+            , "images/*"
+        };
+
          http
             .cors(cors->cors.disable())
             .csrf(csrf->csrf.disable())
+            .authorizeHttpRequests(custom->{
+                custom
+                    .requestMatchers(publicUlrls).permitAll()
+                    .anyRequest().authenticated()
+                ;
+            })
+            .oauth2Login(custom->{
+                ;
+            })
             ;
         return http.build();
     }
