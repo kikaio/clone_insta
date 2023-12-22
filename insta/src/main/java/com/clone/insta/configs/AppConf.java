@@ -11,26 +11,13 @@ import jakarta.servlet.DispatcherType;
 @Configuration
 @EnableWebSecurity
 public class AppConf {
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
-
-        String[] publicUrls = {
-            ""
-            , "/"
-            , "/favicon.ico"
-        };
-
          http
             .cors(cors->cors.disable())
             .csrf(csrf->csrf.disable())
-            .authorizeHttpRequests(custom->{
-                custom
-                    .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                    .requestMatchers(publicUrls).permitAll()
-                    .anyRequest().authenticated()
-                    ;
-            })
             ;
         return http.build();
     }
