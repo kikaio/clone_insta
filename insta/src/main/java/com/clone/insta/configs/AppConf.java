@@ -18,17 +18,22 @@ public class AppConf {
             , "/favicon.ico"
             , "images/*"
         };
-
+        String[] signUrls = {
+            "/sign-in"
+        };
+        
          http
             .cors(cors->cors.disable())
             .csrf(csrf->csrf.disable())
             .authorizeHttpRequests(custom->{
                 custom
                     .requestMatchers(publicUlrls).permitAll()
+                    .requestMatchers(signUrls).permitAll()
                     .anyRequest().authenticated()
                 ;
             })
-            .oauth2Login(custom->{
+            .formLogin(custom->{
+                custom.loginPage("/sign-in")
                 ;
             })
             ;
