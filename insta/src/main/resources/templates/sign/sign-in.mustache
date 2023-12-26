@@ -3,24 +3,30 @@
 <html>
     {{> partials/head-def}}
     <body>
-        <div id="content">
-            <div class="col-md-5">
-            <span class="d-block text-center my-4 text-muted"> or sign in with</span>
-            <div class="social-login text-center">
-            <a href="#" class="facebook btn btn-block">
-            <span class="icon-facebook mr-3"></span>
-            </a>
-            <a href="#" class="twitter btn btn-block">
-            <span class="icon-twitter mr-3"></span>
-            </a>
-            <a href="#" class="google btn btn-block">
-            <span class="icon-google mr-3"></span>
-            </a>
-            </div>
+        <div class="d-flex p-2 h-auto v-auto justify-content-center container-fluid">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="images/logo.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Clone_Insta</h5>
+                            <p class="card-text text-center">sign in with</p>
+                            <div class="text-center w-100">
+                                <a href="/oauth2/authorization/google">
+                                    <img src="images/oauth_icon_google.png" alt="..." style="width:60px;height:60px;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
             </div>
         </div>
        {{> partials/footer-none}}
-    </body>
+        </body>
 </html>
 
 
