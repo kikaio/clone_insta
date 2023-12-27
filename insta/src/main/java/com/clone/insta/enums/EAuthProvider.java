@@ -18,17 +18,4 @@ public enum EAuthProvider {
         this.desc = desc;
         this.useable = useable;
     }
-
-    public EAuthProvider getProvider(String provider)
-    {
-        for(var eval : EAuthProvider.values())
-        {
-            if(eval.useable == false)
-                continue;
-            if(eval.provider.equals(provider) ==false)
-                continue;
-            return eval;
-        }
-        return NONE;
-    }
 }
