@@ -23,7 +23,7 @@ public class CustomOAuthService implements OAuth2UserService<OAuth2UserRequest, 
     public OAuth2User loadUser(OAuth2UserRequest request) throws OAuth2AuthenticationException {
         var defService = new DefaultOAuth2UserService();
         var oauthUser = defService.loadUser(request);
-
+        
         var regisId = request.getClientRegistration().getRegistrationId();
         var userName = request.getClientRegistration()
             .getProviderDetails()
