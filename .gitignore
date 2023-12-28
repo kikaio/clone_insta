@@ -1,3 +1,5 @@
 insta/src/main/resources/application-dev.properties
 insta/src/main/resources/properties/dev/db.properties
+insta/src/main/resources/properties/dev/redis.properties
+insta/src/main/resources/properties/dev/session.properties
 insta/src/main/resources/properties/dev/oauth/google.properties
