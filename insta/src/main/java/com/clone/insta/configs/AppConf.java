@@ -8,8 +8,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
+import com.clone.insta.services.CustomOAuthService;
+
+import lombok.AllArgsConstructor;
+
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class AppConf {
 
     static final String signInUrl = "/sign-in";
@@ -22,6 +27,8 @@ public class AppConf {
     static final String[] signUrls = {
         signInUrl
     };
+
+    private final CustomOAuthService customOAuthService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
@@ -41,16 +48,17 @@ public class AppConf {
                     e.printStackTrace();
                 }
             })
-            .exceptionHandling(custom->{
-                custom.authenticationEntryPoint(
-                    new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)
-                );
-            })
             .logout(custom->{
                 custom.logoutSuccessUrl("/main");
             })
+            .formLogin(custom->{
+                custom.loginPage("/sign-in");
+            })
             .oauth2Login(custom->{
                 custom.loginPage(signInUrl);
+                custom.userInfoEndpoint(conf->{
+                    conf.userService(customOAuthService);
+                });
             })
             ;
         return http.build();

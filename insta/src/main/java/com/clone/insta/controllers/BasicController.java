@@ -5,19 +5,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+
 @Controller
 @RequestMapping("")
 public class BasicController {
 
     @GetMapping("/")
-    public String index()
+    public String indexPage()
     {
         return "index";
     }
 
     @GetMapping("/sign-in")
-    public String signIn() {
+    public String signInPAge() {
         return "sign/sign-in";
     }
     
+    @GetMapping("/main")
+    public String mainPage() {
+        return "main";
+    }
 }
