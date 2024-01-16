@@ -2,8 +2,13 @@ accounts
 . id / bigint (PK) : key
 . email / varchar (UK) : user email address
 . password / varchar : encoded password
-. locked / boolean : user account lock state
-. enabled / boolean : user account usable state
+. signProvider / String : about user sign in platform 
+. role / String : about user's role type value.
+. isAccountExpired / boolean : user account expired state
+. isAccountNonLocked / boolean : user account lock state
+. isCredentialsNonExpired / boolean : user account credential expired state
+. isEnabled / boolean : user account useable state
+
 
 profiles
 . id / bigint (PK) : key
@@ -12,7 +17,10 @@ profiles
 . postCnt / int : user's post count
 . followerCnt / int : user's follower count
 . followeeCnt / int : user follow other user count
+-------------duplicated----------
 . profileImgCnt / int : this profile's image count
+--------------------------------------
+
 
 profileImgs
 . id / bigint (PK) : key

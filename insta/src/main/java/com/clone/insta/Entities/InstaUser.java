@@ -1,6 +1,7 @@
 package com.clone.insta.Entities;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,8 +23,6 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 public class InstaUser extends UTCTimeBaseEntity implements UserDetails {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,56 +63,46 @@ public class InstaUser extends UTCTimeBaseEntity implements UserDetails {
     @Builder.Default
     private boolean isEnabled = true;
 
-    public String name()
-    {
+    public String name() {
         return "";
     }
 
-    public String getRoleKey()
-    {
+    public String getRoleKey() {
         return this.role.getName();
     }
 
     @Override
-	public String getPassword()
-    {
+    public String getPassword() {
         return this.password;
     }
 
     @Override
-	public String getUsername()
-    {
+    public String getUsername() {
         return this.email;
     }
 
     @Override
-	public boolean isAccountNonExpired()
-    {
+    public boolean isAccountNonExpired() {
         return this.isAccountExpired;
     }
 
     @Override
-	public boolean isAccountNonLocked()
-    {
+    public boolean isAccountNonLocked() {
         return this.isAccountNonLocked;
     }
 
     @Override
-    public boolean isCredentialsNonExpired()
-    {
+    public boolean isCredentialsNonExpired() {
         return this.isCredentialsNonExpired;
     }
 
     @Override
-	public boolean isEnabled()
-    {
+    public boolean isEnabled() {
         return this.isEnabled;
     }
 
     @Override
-    public Collection<SimpleGrantedAuthority> getAuthorities()
-    {
-        return null;
+    public Collection<SimpleGrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.toString()));
     }
-
 }
