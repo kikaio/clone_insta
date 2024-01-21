@@ -64,7 +64,7 @@ public class InstaUser extends UTCTimeBaseEntity implements UserDetails {
     private boolean isEnabled = true;
 
     public String name() {
-        return "";
+        return email;
     }
 
     public String getRoleKey() {
@@ -105,4 +105,5 @@ public class InstaUser extends UTCTimeBaseEntity implements UserDetails {
     public Collection<SimpleGrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.toString()));
     }
+
 }
