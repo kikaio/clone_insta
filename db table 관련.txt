@@ -27,6 +27,10 @@ profileImgs
 . profileId / bigint (FK) : this img's profile id
 . img / blob : image file binary data
 
+postThumbnails
+. id / bingint (FK) : key of posts 
+. thimbnail / blob : thumbnail about post's first image
+
 posts
 . id / bigint (PK) : key
 . profileId / bigint (FK) : this post writer's profile id
