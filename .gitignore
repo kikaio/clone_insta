@@ -3,3 +3,7 @@ insta/src/main/resources/properties/dev/db.properties
 insta/src/main/resources/properties/dev/redis.properties
 insta/src/main/resources/properties/dev/session.properties
 insta/src/main/resources/properties/dev/oauth/google.properties
+insta/src/main/resources/properties/local/db.properties
+insta/src/main/resources/properties/local/redis.properties
+insta/src/main/resources/properties/local/session.properties
+insta/src/main/resources/properties/local/oauth/google.properties
