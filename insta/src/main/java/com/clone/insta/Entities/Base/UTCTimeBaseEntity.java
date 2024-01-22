@@ -4,7 +4,6 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -14,7 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-@Entity
 @MappedSuperclass
 @Getter
 @ToString
@@ -29,15 +27,13 @@ public class UTCTimeBaseEntity {
     private OffsetDateTime mdate;
 
     @PrePersist
-    public void prePersist()
-    {
+    public void prePersist() {
         this.cdate = OffsetDateTime.now(ZoneId.of("UTC"));
         this.mdate = this.cdate;
     }
 
     @PreUpdate
-    public void preUpdate()
-    {
+    public void preUpdate() {
         this.mdate = OffsetDateTime.now(ZoneId.of("UTC"));
     }
 }

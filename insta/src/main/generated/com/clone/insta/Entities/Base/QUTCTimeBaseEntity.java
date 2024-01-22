@@ -12,7 +12,7 @@ import com.querydsl.core.types.Path;
 /**
  * QUTCTimeBaseEntity is a Querydsl query type for UTCTimeBaseEntity
  */
-@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+@Generated("com.querydsl.codegen.DefaultSupertypeSerializer")
 public class QUTCTimeBaseEntity extends EntityPathBase<UTCTimeBaseEntity> {
 
     private static final long serialVersionUID = 44110468L;

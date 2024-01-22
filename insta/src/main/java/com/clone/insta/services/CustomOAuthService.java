@@ -67,7 +67,6 @@ public class CustomOAuthService implements OAuth2UserService<OAuth2UserRequest, 
                 curProfile = Profile.builder()
                         .accountId(user)
                         .nickname(sb.toString())
-                        .postCnt(0)
                         .build();
                 curProfile = profileRepository.save(curProfile);
             } else {

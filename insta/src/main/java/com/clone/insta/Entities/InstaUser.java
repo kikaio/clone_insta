@@ -26,19 +26,21 @@ public class InstaUser extends UTCTimeBaseEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @Column
     private Long id;
 
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
-    @ColumnDefault("")
+    @ColumnDefault("''")
     @Builder.Default
     private String password = "";
 
     @Column
-    private String signProvider;
+    @ColumnDefault("''")
+    @Builder.Default
+    private String signProvider = "";
 
     @Column
     private ERoles role;

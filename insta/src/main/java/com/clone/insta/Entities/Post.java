@@ -19,14 +19,14 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @SuperBuilder
 public class Post extends UTCTimeBaseEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
+    @Column
     private Long id;
 
     @Column(nullable = false)
     @Builder.Default
-    @ColumnDefault("")
+    @ColumnDefault("''")
     private String content = "";
 }

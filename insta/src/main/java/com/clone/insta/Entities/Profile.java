@@ -9,7 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,15 +32,10 @@ public class Profile {
     @Column(nullable = false, unique = true)
     private Long id;
 
-    @Column
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    @JoinColumn(name = "account_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_account_id"))
     private InstaUser accountId;
 
     @Column(unique = true, nullable = false)
     private String nickname;
-
-    @Column
-    @ColumnDefault("0")
-    private Integer postCnt;
 }
