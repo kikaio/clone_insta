@@ -56,6 +56,7 @@ public class CustomOAuthService implements OAuth2UserService<OAuth2UserRequest, 
                 user = InstaUser.builder()
                         .email(oauthDto.getEmail())
                         .role(ERoles.USER)
+                        .signProvider(registId)
                         .build();
                 user = instaUserRepository.save(user);
                 StringBuffer sb = new StringBuffer(user.getEmail());
