@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import com.clone.insta.Entities.InstaUser;
 import com.clone.insta.Entities.Profile;
+import com.clone.insta.repositories.Dsl.ProfileSearch;
 
 @Repository
-public interface ProfileRepository extends JpaRepository<Profile, Long> {
+public interface ProfileRepository extends JpaRepository<Profile, Long>, ProfileSearch{
 
     Optional<Profile> findByNickname(String nickName);
 
