@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
@@ -16,11 +17,6 @@ public class ProfileSearchImpl extends QuerydslRepositorySupport implements Prof
     public ProfileSearchImpl()
     {
         super(Profile.class);
-    }
-
-    public Profile searchProfile(Long id)
-    {
-        return null;
     }
 
     public Page<Profile> searchProfiles(Pageable pageable, String nickname)
@@ -37,7 +33,8 @@ public class ProfileSearchImpl extends QuerydslRepositorySupport implements Prof
         }
         this.getQuerydsl().applyPagination(pageable, query);
         var retList = query.fetch();
-        return null;
+        Long totalCnt = query.fetchCount();
+        return new PageImpl(retList, pageable, totalCnt);
     }
     
 }
